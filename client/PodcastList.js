@@ -16,8 +16,8 @@ function PodcastList(props) {
       justifyContent: 'space-around',
     },
     gridList: {
-      width: 500,
-      height: 450,
+      width: 700,
+      height: 500,
       overflowY: 'auto',
     },
   }
@@ -26,6 +26,7 @@ function PodcastList(props) {
     <MuiThemeProvider>
       <div style={styles.root}>
         <GridList
+          cols={3}
           cellHeight={230}
           padding={1}
           style={styles.gridList}
