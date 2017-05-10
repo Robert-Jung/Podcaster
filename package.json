@@ -6,7 +6,7 @@
   "scripts": {
     "watch": "nodemon ./server/index.js",
     "bundle": "browserify ./client/index.js -t babelify -o ./server/public/main.js",
-    "bundle:watch": "watchify client/ -vd -t babelify -o ./server/public/main.js"
+    "bundle:watch": "watchify client/index.js -vd -t babelify -o ./server/public/main.js"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,7 @@
     "watchify": "^3.9.0"
   },
   "dependencies": {
+    "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "level": "^1.6.0",
     "material-ui": "^0.18.0",
