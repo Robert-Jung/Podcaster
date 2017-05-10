@@ -19,6 +19,10 @@ function PodcastList(props) {
       width: 700,
       height: 500,
       overflowY: 'auto',
+      paddingTop: '5px',
+    },
+    gridTile: {
+      fontFamily: 'Roboto',
     },
   }
 
@@ -28,7 +32,7 @@ function PodcastList(props) {
         <GridList
           cols={3}
           cellHeight={230}
-          padding={1}
+          padding={0}
           style={styles.gridList}
         >
           {podcasts.map((podcast) => (
@@ -36,6 +40,7 @@ function PodcastList(props) {
               key={podcast.image}
               title={podcast.title}
               subtitle={<span>Category: <b>{podcast.category}</b></span>}
+              style={styles.gridTile}
             >
               <img src={podcast.image} />
             </GridTile>

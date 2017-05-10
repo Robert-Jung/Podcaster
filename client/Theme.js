@@ -3,14 +3,13 @@ const darkBaseTheme = require('material-ui/styles/baseThemes/darkBaseTheme').def
 const MuiThemeProvider = require('material-ui/styles/MuiThemeProvider').default
 const getMuiTheme = require('material-ui/styles/getMuiTheme').default
 const AppBar = require('material-ui/AppBar').default
-const grey800 = require('material-ui/styles/colors').grey800
-const darkWhite = require('material-ui/styles/colors').darkWhite
+const colors = require('material-ui/styles/colors')
 
 const muiTheme = getMuiTheme({
   appBar: {
     height: 40,
-    color: grey800,
-    textColor: darkWhite
+    color: colors.grey800,
+    textColor: colors.darkWhite
   }
 })
 

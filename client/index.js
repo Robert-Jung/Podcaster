@@ -12,10 +12,10 @@ function render() {
   const $root = document.querySelector('#app')
 
   ReactDOM.render(
-  <div>
-    <Theme/>
-    <PodcastList list={ currentState.podcasts }/>
-  </div>,
+    <div>
+      <Theme/>
+      <PodcastList list={ currentState.podcasts }/>
+    </div>,
   $root)
 }
 
