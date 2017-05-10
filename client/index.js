@@ -1,8 +1,8 @@
 const React = require('react')
 const ReactDOM = require('react-dom')
 const store = require('./store')
+const Theme = require('./Theme')
 const PodcastList = require('./PodcastList')
-const MuiThemeProvider = require('material-ui/styles/MuiThemeProvider').default
 const injectTapEventPlugin = require('react-tap-event-plugin')
 
 injectTapEventPlugin()
@@ -11,13 +11,12 @@ function render() {
   const currentState = store.getState()
   const $root = document.querySelector('#app')
 
-  const App = () => (
-    <MuiThemeProvider>
-      <PodcastList list={ currentState.podcasts }/>
-    </MuiThemeProvider>
-  )
-
-  ReactDOM.render(<App />, $root)
+  ReactDOM.render(
+  <div>
+    <Theme/>
+    <PodcastList list={ currentState.podcasts }/>
+  </div>,
+  $root)
 }
 
 store.subscribe(render)
