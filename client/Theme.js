@@ -13,13 +13,13 @@ const muiTheme = getMuiTheme({
   }
 })
 
-const Theme = () => (
+const Theme = (props) => (
   <MuiThemeProvider muiTheme={ muiTheme }>
     <AppBar
       showMenuIconButton={ false }
       title='Podcaster'
       iconElementRight={
-        <SearchInput/>
+        <SearchInput />
       }
     />
   </MuiThemeProvider>

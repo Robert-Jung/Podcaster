@@ -11,7 +11,7 @@ injectTapEventPlugin()
 function App(props) {
   return (
     <div>
-      <Theme/>
+      <Theme />
       <PodcastList list={ props.podcasts }/>
     </div>
   )

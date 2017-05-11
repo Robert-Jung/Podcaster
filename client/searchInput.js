@@ -18,6 +18,16 @@ function handleChange(event) {
   })
 }
 
+function handleSubmit(event) {
+  const state = store.getState()
+  const searchInput = { searchInput: state.searchInput }
+  fetch('/search', {
+    method: 'POST',
+    headers: { 'Content-type': 'application/json'},
+    body: JSON.stringify(searchInput)
+  })
+}
+
 const SearchInput = () => {
   return (
     <form>
@@ -28,6 +38,7 @@ const SearchInput = () => {
       <RaisedButton
       icon={<ActionSearch />}
       style={style}
+      onTouchTap={ handleSubmit }
       />
     </form>
   )
