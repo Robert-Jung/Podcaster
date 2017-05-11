@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const respondStatic = express.static('./server/public')
 const levelup = require('level')
 const db = levelup('../mydb')
+const searchPodcast = require('./searchPodcasts')
 
 app.use(respondStatic)
 app.use(bodyParser.json())
@@ -16,8 +17,8 @@ app.get('/podcasts', (req, res) => {
 })
 
 app.post('/search', (req, res) =>{
-  const data = req.body
-  console.log(data)
+  const searchTerm = req.body
+  searchPodcast(searchTerm)
 })
 
 app.listen(3000, () => {
