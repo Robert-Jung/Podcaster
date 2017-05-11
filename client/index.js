@@ -4,18 +4,27 @@ const store = require('./store')
 const Theme = require('./Theme')
 const PodcastList = require('./PodcastList')
 const injectTapEventPlugin = require('react-tap-event-plugin')
+const MuiThemeProvider = require('material-ui/styles/MuiThemeProvider').default
 
 injectTapEventPlugin()
+
+function App(props) {
+  return (
+    <div>
+      <Theme/>
+      <PodcastList list={ props.podcasts }/>
+    </div>
+  )
+}
 
 function render() {
   const currentState = store.getState()
   const $root = document.querySelector('#app')
 
   ReactDOM.render(
-    <div>
-      <Theme/>
-      <PodcastList list={ currentState.podcasts }/>
-    </div>,
+      <MuiThemeProvider>
+        <App {...currentState}/>
+      </MuiThemeProvider>,
   $root)
 }
 
