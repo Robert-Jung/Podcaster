@@ -15,7 +15,7 @@ function searchPodcast(term) {
         const name = searchResults.map((result) =>{
           const properties = {
             title: result.collectionName,
-            img: result.artworkUrl600,
+            img: result.artworkUrl60,
             feedURL: result.feedUrl
           }
           data.push(properties)

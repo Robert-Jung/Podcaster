@@ -1,17 +1,27 @@
 const React = require('react')
 const ReactDOM = require('react-dom')
 const store = require('./store')
-const Theme = require('./Theme')
+const SearchBar = require('./SearchBar')
 const PodcastList = require('./PodcastList')
 const injectTapEventPlugin = require('react-tap-event-plugin')
 const MuiThemeProvider = require('material-ui/styles/MuiThemeProvider').default
+const getMuiTheme = require('material-ui/styles/getMuiTheme').default
+const colors = require('material-ui/styles/colors')
 
 injectTapEventPlugin()
+
+const muiTheme = getMuiTheme({
+  appBar: {
+    height: 80,
+    color: colors.grey800,
+    textColor: colors.darkWhite,
+  }
+})
 
 function App(props) {
   return (
     <div>
-      <Theme />
+      <SearchBar searchPodcast={ props.searchPodcast }/>
       <PodcastList list={ props.podcasts }/>
     </div>
   )
@@ -20,10 +30,9 @@ function App(props) {
 function render() {
   const currentState = store.getState()
   const $root = document.querySelector('#app')
-  console.log(currentState)
 
   ReactDOM.render(
-      <MuiThemeProvider>
+      <MuiThemeProvider muiTheme={ muiTheme }>
         <App {...currentState}/>
       </MuiThemeProvider>,
   $root)
