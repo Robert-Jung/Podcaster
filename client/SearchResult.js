@@ -22,20 +22,24 @@ const style = {
   img: {
     textAlign: 'center',
     lineHeight: '28px'
+  },
+  menu: {
+    width: '300px'
   }
 }
 
 const searchResult = (props) => {
   const podcasts = props.searchResult
+
   return(
     <div>
       <Paper style={style.paper}>
-        <Menu autoWidth={false} maxHeight={200}>
+        <Menu autoWidth={false} maxHeight={400}>
           {podcasts.map((podcast, i) => (
             <div key={ i }>
-              <MenuItem
+              <MenuItem style={ style.menu }
                 primaryText={ podcast.title }
-                rightIcon={<img style={style.img} src={podcast.img}/>}
+                leftIcon={<img style={style.img} src={podcast.img}/>}
               />
               <Divider/>
             </div>
