@@ -25,6 +25,15 @@ function handleSubmit(event) {
     method: 'POST',
     headers: { 'Content-type': 'application/json'},
     body: JSON.stringify(searchInput)
+  }).then((res) => {
+    return res.json()
+  }).then((data) => {
+    data.map((searchedPodcast) =>{
+      store.dispatch({
+        type: 'SEARCH_LOADED',
+        searchedPodcast
+      })
+    })
   })
 }
 

@@ -19,6 +19,12 @@ app.get('/podcasts', (req, res) => {
 app.post('/search', (req, res) =>{
   const searchTerm = req.body
   searchPodcast(searchTerm)
+    .then(data => {
+      res.status(200).json(data)
+    })
+    .catch(error => {
+      res.sendStatus(500).json({ error: 'Podcast search error'})
+    })
 })
 
 app.listen(3000, () => {

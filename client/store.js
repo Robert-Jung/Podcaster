@@ -20,7 +20,17 @@ const searchInput = function newSearch(state = '', action) {
   }
 }
 
-const reducer = Redux.combineReducers({ podcasts, searchInput })
+const searchPodcast = function searchedPodcast(state = [], action) {
+  switch(action.type) {
+    case 'SEARCH_LOADED':
+      state.push(action.searchedPodcast)
+      return state
+    default:
+      return state
+  }
+}
+
+const reducer = Redux.combineReducers({ podcasts, searchInput, searchPodcast })
 const store = Redux.createStore(reducer)
 
 module.exports = store
