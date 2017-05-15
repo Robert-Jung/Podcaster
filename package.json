@@ -4,10 +4,11 @@
   "description": "A web application for podcast listeners to search, subscribe, and organize their podcast episode.",
   "main": "./client/index.js",
   "scripts": {
-    "watch": "nodemon ./server/index.js",
+    "watch:server": "nodemon ./server/index.js",
     "bundle": "browserify ./client/index.js -t babelify -o ./server/public/main.js",
-    "bundle:watch": "watchify client/index.js -vd -t babelify -o ./server/public/main.js",
-    "seed": "node ./server/seed.js"
+    "watch:bundle": "watchify client/index.js -vd -t babelify -o ./server/public/main.js",
+    "seed": "node ./server/seed.js",
+    "allwatch": "run-p watch:*"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
     "babelify": "^7.3.0",
     "browserify": "^14.3.0",
     "nodemon": "^1.11.0",
+    "npm-run-all": "^4.0.2",
     "watchify": "^3.9.0"
   },
   "dependencies": {
@@ -35,6 +37,7 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-tap-event-plugin": "^2.0.1",
-    "redux": "^3.6.0"
+    "redux": "^3.6.0",
+    "request": "^2.81.0"
   }
 }

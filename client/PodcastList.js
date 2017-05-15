@@ -1,11 +1,7 @@
 const React = require('react')
 const GridList = require('material-ui/GridList').GridList
 const GridTile = require('material-ui/GridList').GridTile
-const IconButton = require('material-ui/IconButton').default
 const Subheader = require('material-ui/Subheader').default
-const StarBorder = require('material-ui/svg-icons/toggle/star-border').default
-const RaisedButton = require('material-ui/RaisedButton').default
-const MuiThemeProvider = require('material-ui/styles/MuiThemeProvider').default
 
 function PodcastList(props) {
   const podcasts = props.list
@@ -27,7 +23,6 @@ function PodcastList(props) {
   }
 
   return (
-    <MuiThemeProvider>
       <div style={styles.root}>
         <GridList
           cols={3}
@@ -47,7 +42,6 @@ function PodcastList(props) {
           ))}
         </GridList>
       </div>
-    </MuiThemeProvider>
   )
 
 }
