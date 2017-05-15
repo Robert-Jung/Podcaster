@@ -8,7 +8,15 @@ const FontIcon = require('material-ui/FontIcon').default
 const ActionSearch = require('material-ui/svg-icons/action/search').default
 
 const style = {
-  margin: '20px',
+  textColor: {
+    color: colors.white,
+  },
+  floatingLabelStyle: {
+    color: colors.white,
+  },
+  floatingLabelFocusStyle: {
+    color: colors.white,
+  }
 }
 
 function handleChange(event) {
@@ -39,12 +47,15 @@ const SearchInput = () => {
   return (
     <form>
       <TextField
+      inputStyle={style.textColor}
       floatingLabelText='Search for Podcast'
+      floatingLabelStyle={style.floatingLabelStyle}
+      floatingLabelFocusStyle={style.floatingLabelFocusStyle}
       onChange={ handleChange }
       />
       <RaisedButton
       icon={<ActionSearch />}
-      style={style}
+      style={style.button}
       onTouchTap={ handleSubmit }
       />
     </form>
