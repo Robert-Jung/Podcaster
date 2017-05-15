@@ -28,12 +28,9 @@ function handleSubmit(event) {
   }).then((res) => {
     return res.json()
   }).then((data) => {
-    console.log(data)
-    data.map((searchedPodcast) =>{
-      store.dispatch({
-        type: 'SEARCH_LOADED',
-        searchedPodcast
-      })
+    store.dispatch({
+      type: 'SEARCH_LOADED',
+      searchedPodcast: data
     })
   })
 }
