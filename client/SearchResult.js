@@ -38,14 +38,15 @@ function handleDetailPage(url) {
   }).then((res) => {
     return res.json()
   }).then((episodeList) => {
-    console.log(episodeList)
-  }).then(() => {
-    store.dispatch({
-      type: 'CLEAR_DISCOVER'
-    })
-  }).then(() => {
     store.dispatch({
       type: 'SEARCH_FINISHED'
+    }),
+    store.dispatch({
+      type: 'CLEAR_DISCOVER'
+    }),
+    store.dispatch({
+      type: 'LOAD_EPISODES',
+      episodeList
     })
   })
 }

@@ -3,6 +3,7 @@ const ReactDOM = require('react-dom')
 const store = require('./store')
 const SearchBar = require('./SearchBar')
 const PodcastList = require('./PodcastList')
+const DetailPage = require('./DetailPage')
 const injectTapEventPlugin = require('react-tap-event-plugin')
 const MuiThemeProvider = require('material-ui/styles/MuiThemeProvider').default
 const getMuiTheme = require('material-ui/styles/getMuiTheme').default
@@ -22,6 +23,7 @@ function App(props) {
   return (
     <div>
       <SearchBar searchPodcast={ props.searchPodcast }/>
+      <DetailPage list= { props.podcastEpisode }/>
       <PodcastList list={ props.podcasts }/>
     </div>
   )
@@ -46,4 +48,5 @@ fetch('/podcasts')
   .then(res => res.json())
   .then(podcasts => {
     store.dispatch({ type:'LOAD_DISCOVER', podcasts })
+    store.dispatch({ type:''})
   })
