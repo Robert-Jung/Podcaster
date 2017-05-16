@@ -39,6 +39,10 @@ function handleDetailPage(url) {
     return res.json()
   }).then((episodeList) => {
     console.log(episodeList)
+  }).then(() => {
+    store.dispatch({
+      type: 'SEARCH_FINISHED'
+    })
   })
 }
 
