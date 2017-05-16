@@ -5,6 +5,7 @@ const respondStatic = express.static('./server/public')
 const levelup = require('level')
 const db = levelup('../mydb')
 const searchPodcast = require('./searchPodcasts')
+const returnEpisodeXML = require('./episodeList')
 
 app.use(respondStatic)
 app.use(bodyParser.json())
@@ -16,7 +17,7 @@ app.get('/podcasts', (req, res) => {
   })
 })
 
-app.post('/search', (req, res) =>{
+app.post('/search', (req, res) => {
   const searchTerm = req.body
   searchPodcast(searchTerm)
     .then(data => {
@@ -25,6 +26,13 @@ app.post('/search', (req, res) =>{
     .catch(error => {
       res.sendStatus(500).json({ error: 'Podcast search error'})
     })
+})
+
+app.post('/detailpage', (req, res) => {
+  const xmlFile = req.body.url
+  console.log(xmlFile)
+  returnEpisodeXML(xmlFile)
+
 })
 
 app.listen(3000, () => {
