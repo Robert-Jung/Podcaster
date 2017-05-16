@@ -2,8 +2,10 @@ const Redux = require('redux')
 
 const podcasts = function podcastList(state = [], action) {
   switch(action.type) {
-    case 'PAGE_LOADED':
+    case 'LOAD_DISCOVER':
       return action.podcasts
+    case 'CLEAR_DISCOVER':
+      return []
     default:
       return state
   }

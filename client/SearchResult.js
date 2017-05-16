@@ -41,6 +41,10 @@ function handleDetailPage(url) {
     console.log(episodeList)
   }).then(() => {
     store.dispatch({
+      type: 'CLEAR_DISCOVER'
+    })
+  }).then(() => {
+    store.dispatch({
       type: 'SEARCH_FINISHED'
     })
   })

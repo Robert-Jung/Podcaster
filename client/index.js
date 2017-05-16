@@ -45,5 +45,5 @@ render()
 fetch('/podcasts')
   .then(res => res.json())
   .then(podcasts => {
-    store.dispatch({ type:'PAGE_LOADED', podcasts })
+    store.dispatch({ type:'LOAD_DISCOVER', podcasts })
   })
