@@ -1,4 +1,5 @@
 const React = require('react')
+const store = require('./store')
 const Paper = require('material-ui/Paper').default
 const Menu = require('material-ui/Menu').default
 const MenuItem = require('material-ui/MenuItem').default
@@ -28,6 +29,15 @@ const style = {
   }
 }
 
+function handleDetailPage(url) {
+  const urlLink = { url }
+  fetch('/detailpage', {
+    method: 'POST',
+    headers: { 'Content-type': 'application/json'},
+    body: JSON.stringify(urlLink)
+  })
+}
+
 const searchResult = (props) => {
   const podcasts = props.searchResult
 
@@ -40,6 +50,7 @@ const searchResult = (props) => {
               <MenuItem style={ style.menu }
                 primaryText={ podcast.title }
                 leftIcon={<img style={style.img} src={podcast.img}/>}
+                onClick={ ()=> handleDetailPage(podcast.feedURL) }
               />
               <Divider/>
             </div>
