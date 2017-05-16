@@ -1,21 +1,32 @@
-var Feed = require('rss-to-json')
+const request = require('request')
 
 function returnEpisodeXML(xmlLink) {
+  const pathName =  ('https://api.rss2json.com/v1/api.json?rss_url=' + xmlLink)
 
   return new Promise((resolve, reject) => {
-    Feed.load(xmlLink, function(err, rss) {
-      if (err) {
-        reject(console.error(err))
+    request(pathName, (error, res, body) => {
+      const convertFeed = JSON.parse(body)
+      const podcastDetail = convertFeed.feed
+      const itemList = convertFeed.items
+      const episodeList = []
+
+      if (error) {
+        reject(error)
       }
       else {
-        const rssFeedList = rss.items
-        const episodeList = []
-
-          rssFeedList.map((episodes) => {
+        itemList.map((episodes) => {
           const episode = {
-            title: episodes.title,
-            description: episodes.description,
-            episodeURL: episodes.enclosures[0].url
+            detail: {
+              url: podcastDetail.link,
+              title: podcastDetail.title,
+              description: podcastDetail.description,
+              image: podcastDetail.image
+            },
+            episode: {
+              title: episodes.title,
+              description: episodes.description,
+              episodeURL: episodes.enclosure.link
+            }
           }
           episodeList.push(episode)
           resolve(episodeList)
