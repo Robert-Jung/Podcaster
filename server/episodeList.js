@@ -25,7 +25,9 @@ function returnEpisodeXML(xmlLink) {
             episode: {
               title: episodes.title,
               description: episodes.description,
-              episodeURL: episodes.enclosure.link
+              date: episodes.pubDate,
+              episodeURL: episodes.enclosure.link,
+              length: episodes.enclosure.length
             }
           }
           episodeList.push(episode)
