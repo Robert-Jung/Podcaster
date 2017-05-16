@@ -35,6 +35,10 @@ function handleDetailPage(url) {
     method: 'POST',
     headers: { 'Content-type': 'application/json'},
     body: JSON.stringify(urlLink)
+  }).then((res) => {
+    return res.json()
+  }).then((episodeList) => {
+    console.log(episodeList)
   })
 }
 

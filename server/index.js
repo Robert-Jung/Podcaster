@@ -22,17 +22,19 @@ app.post('/search', (req, res) => {
   searchPodcast(searchTerm)
     .then(data => {
       res.status(200).json(data)
-    })
-    .catch(error => {
+    }).catch(error => {
       res.sendStatus(500).json({ error: 'Podcast search error'})
     })
 })
 
 app.post('/detailpage', (req, res) => {
   const xmlFile = req.body.url
-  console.log(xmlFile)
   returnEpisodeXML(xmlFile)
-
+    .then(episodeList => {
+      res.status(200).json(episodeList)
+    }).catch(error => {
+      res.sendStatus(500).json({error: 'Return Episode List error'})
+    })
 })
 
 app.listen(3000, () => {

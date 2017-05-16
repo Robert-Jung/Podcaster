@@ -23,7 +23,6 @@ const searchInput = function newSearch(state = '', action) {
 const searchPodcast = function searchedPodcast(state = [], action) {
   switch(action.type) {
     case 'SEARCH_LOADED':
-      console.log(action.searchedPodcast)
       return [...action.searchedPodcast]
     case 'SEARCH_FINISHED':
       return []
