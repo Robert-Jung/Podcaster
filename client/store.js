@@ -33,7 +33,7 @@ const searchPodcast = function searchedPodcast(state = [], action) {
   }
 }
 
-const channelDetail = function searchFeed(state = [], action) {
+const channelDetail = function searchFeed(state = { episode: [] }, action) {
   switch(action.type) {
     case 'LOAD_EPISODES':
       return action.channelDetail

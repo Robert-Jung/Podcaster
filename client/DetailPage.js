@@ -4,21 +4,42 @@ const List = require('material-ui/List').default
 const ListItem = require('material-ui/List').ListItem
 const Divider = require('material-ui/Divider').default
 
-const renderDetailPage = (props) => {
-  const episodes = props.list
+const ChannelHeader = (props) => {
+  const channel = props.info
+
+  return(
+    <div>
+      <h1>
+        {channel.title}
+      </h1>
+    </div>
+  )
+}
+
+const ChannelEpisodeList = (props) => {
+  const episodeList = props.info.episode
 
   return(
     <div>
       <List>
-        {episodes.map((episode, i) => (
+        {episodeList.map((episodes, i) => (
           <div key={ i }>
             <ListItem
-            primaryText = { episode.episode.title }
+            primaryText = { episodes.title }
             />
             <Divider />
           </div>
         ))}
       </List>
+    </div>
+  )
+}
+
+const renderDetailPage = (props) => {
+  return (
+    <div>
+      <ChannelHeader info={props.channelInfo}/>
+      <ChannelEpisodeList info={props.channelInfo}/>
     </div>
   )
 }
