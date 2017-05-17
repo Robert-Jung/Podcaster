@@ -2,8 +2,10 @@ const Redux = require('redux')
 
 const podcasts = function podcastList(state = [], action) {
   switch(action.type) {
-    case 'PAGE_LOADED':
+    case 'LOAD_DISCOVER':
       return action.podcasts
+    case 'CLEAR_DISCOVER':
+      return []
     default:
       return state
   }
@@ -23,7 +25,6 @@ const searchInput = function newSearch(state = '', action) {
 const searchPodcast = function searchedPodcast(state = [], action) {
   switch(action.type) {
     case 'SEARCH_LOADED':
-      console.log(action.searchedPodcast)
       return [...action.searchedPodcast]
     case 'SEARCH_FINISHED':
       return []
@@ -32,7 +33,34 @@ const searchPodcast = function searchedPodcast(state = [], action) {
   }
 }
 
-const reducer = Redux.combineReducers({ podcasts, searchInput, searchPodcast })
+const channelDetail = function searchFeed(state = { episode: [] }, action) {
+  switch(action.type) {
+    case 'LOAD_EPISODES':
+      return action.channelDetail
+    default:
+      return state
+  }
+}
+
+const view = function changeView(state = '', action) {
+  switch(action.type) {
+    case 'LOAD_EPISODES':
+      return action.view
+  default:
+    return state
+  }
+}
+
+const reducer = Redux.combineReducers(
+  {
+  podcasts,
+  searchInput,
+  searchPodcast,
+  channelDetail,
+  view
+  })
 const store = Redux.createStore(reducer)
+
+window.store = store
 
 module.exports = store
