@@ -46,6 +46,7 @@ function handleDetailPage(url) {
     }),
     store.dispatch({
       type: 'LOAD_EPISODES',
+      view: 'detail',
       channelDetail
     })
   })

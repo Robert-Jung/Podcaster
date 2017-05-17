@@ -11,19 +11,15 @@ const colors = require('material-ui/styles/colors')
 
 injectTapEventPlugin()
 
-const muiTheme = getMuiTheme({
-  appBar: {
-    height: 80,
-    color: colors.grey800,
-    textColor: colors.darkWhite,
-  }
-})
-
 function App(props) {
   return (
     <div>
       <SearchBar searchPodcast={ props.searchPodcast }/>
-      <DetailPage channelInfo= { props.channelDetail }/>
+      {
+        props.view === 'detail'
+        ? <DetailPage channelInfo={ props.channelDetail }/>
+        : null
+      }
       <PodcastList list={ props.podcasts }/>
     </div>
   )
@@ -32,6 +28,15 @@ function App(props) {
 function render() {
   const currentState = store.getState()
   const $root = document.querySelector('#app')
+  console.log(currentState)
+
+  const muiTheme = getMuiTheme({
+    appBar: {
+      height: 80,
+      color: colors.grey800,
+      textColor: colors.darkWhite,
+    }
+  })
 
   ReactDOM.render(
       <MuiThemeProvider muiTheme={ muiTheme }>
