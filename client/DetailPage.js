@@ -9,6 +9,7 @@ const CardHeader = require('material-ui/Card').CardHeader
 const CardMedia = require('material-ui/Card').CardMedia
 const CardTitle = require('material-ui/Card').CardTitle
 const CardText = require('material-ui/Card').CardText
+const AvPlayCircleOutline = require('material-ui/svg-icons/av/play-circle-outline').default
 
 const ChannelHeader = (props) => {
   const channel = props.info
@@ -45,6 +46,7 @@ const ChannelEpisodeList = (props) => {
           <div key={ i }>
             <ListItem
             primaryText = { episodes.title }
+            rightIcon = { <AvPlayCircleOutline /> }
             />
             <Divider />
           </div>
