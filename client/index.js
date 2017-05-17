@@ -23,7 +23,7 @@ function App(props) {
   return (
     <div>
       <SearchBar searchPodcast={ props.searchPodcast }/>
-      <DetailPage list= { props.podcastEpisode }/>
+      <DetailPage list= { props.channelDetail }/>
       <PodcastList list={ props.podcasts }/>
     </div>
   )

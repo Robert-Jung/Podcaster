@@ -37,7 +37,7 @@ function handleDetailPage(url) {
     body: JSON.stringify(urlLink)
   }).then((res) => {
     return res.json()
-  }).then((episodeList) => {
+  }).then((channelDetail) => {
     store.dispatch({
       type: 'SEARCH_FINISHED'
     }),
@@ -46,7 +46,7 @@ function handleDetailPage(url) {
     }),
     store.dispatch({
       type: 'LOAD_EPISODES',
-      episodeList
+      channelDetail
     })
   })
 }

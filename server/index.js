@@ -30,8 +30,8 @@ app.post('/search', (req, res) => {
 app.post('/detailpage', (req, res) => {
   const xmlFile = req.body.url
   returnEpisodeXML(xmlFile)
-    .then(episodeList => {
-      res.status(200).json(episodeList)
+    .then(channelDetail => {
+      res.status(200).json(channelDetail)
     }).catch(error => {
       res.sendStatus(500).json({error: 'Return Episode List error'})
     })

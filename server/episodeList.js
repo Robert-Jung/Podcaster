@@ -8,31 +8,29 @@ function returnEpisodeXML(xmlLink) {
       const convertFeed = JSON.parse(body)
       const podcastDetail = convertFeed.feed
       const itemList = convertFeed.items
-      const episodeList = []
 
       if (error) {
         reject(error)
       }
       else {
-        itemList.map((episodes) => {
-          const episode = {
-            detail: {
-              url: podcastDetail.link,
-              title: podcastDetail.title,
-              description: podcastDetail.description,
-              image: podcastDetail.image
-            },
-            episode: {
-              title: episodes.title,
-              description: episodes.description,
-              date: episodes.pubDate,
-              episodeURL: episodes.enclosure.link,
-              length: episodes.enclosure.length
-            }
+        const episodeList = itemList.map((episodes) => {
+          const episodeDetail = {
+            title: episodes.title,
+            description: episodes.description,
+            date: episodes.pubDate,
+            episodeURL: episodes.enclosure.link,
+            length: episodes.enclosure.length
           }
-          episodeList.push(episode)
-          resolve(episodeList)
+          return episodeDetail
         })
+        const channelDetail = {
+            url: podcastDetail.link,
+            title: podcastDetail.title,
+            description: podcastDetail.description,
+            image: podcastDetail.image,
+            episode: episodeList
+          }
+        resolve(channelDetail)
       }
     })
   })
