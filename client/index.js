@@ -28,7 +28,6 @@ function App(props) {
 function render() {
   const currentState = store.getState()
   const $root = document.querySelector('#app')
-  console.log(currentState)
 
   const muiTheme = getMuiTheme({
     appBar: {
