@@ -1,5 +1,4 @@
 const React = require('react')
-const MuiThemeProvider = require('material-ui/styles/MuiThemeProvider').default
 const AppBar = require('material-ui/AppBar').default
 const SearchInput = require('./searchInput')
 const SearchResult = require('./SearchResult')
