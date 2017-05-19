@@ -1,14 +1,29 @@
 const React = require('react')
-const MuiThemeProvider = require('material-ui/styles/MuiThemeProvider').default
 const List = require('material-ui/List').default
 const ListItem = require('material-ui/List').ListItem
 const Divider = require('material-ui/Divider').default
 const Card = require('material-ui/Card').default
-const CardActions = require('material-ui/Card').CardActions
-const CardHeader = require('material-ui/Card').CardHeader
-const CardMedia = require('material-ui/Card').CardMedia
-const CardTitle = require('material-ui/Card').CardTitle
-const CardText = require('material-ui/Card').CardText
+const {CardActions, CardHeader, CardMedia, CardTitle, CardText} = require('material-ui/Card')
+const AvPlayCircleOutline = require('material-ui/svg-icons/av/play-circle-outline').default
+const RaisedButton = require('material-ui/RaisedButton').default
+const Paper = require('material-ui/Paper').default
+const MediaPlayer = require('./MediaPlayer')
+
+function handlePlayEpisode(event) {
+  const currentState = store.getState()
+  const episodes = currentState.channelDetail.episode
+  const i = event.currentTarget.id
+  const podcastURL = episodes[i].episodeURL
+
+  store.dispatch({
+    type: 'GET_PATH',
+    podcastURL
+  })
+  store.dispatch({
+    type: 'LOAD_PLAYER',
+    view: 'player'
+  })
+}
 
 const ChannelHeader = (props) => {
   const channel = props.info
@@ -44,7 +59,17 @@ const ChannelEpisodeList = (props) => {
         {episodeList.map((episodes, i) => (
           <div key={ i }>
             <ListItem
-            primaryText = { episodes.title }
+            hoverColor={'grey'}
+            disableTouchRipple={true}
+            primaryText={ episodes.title }
+            rightIcon={
+              <RaisedButton
+              id={ i }
+              icon={ <AvPlayCircleOutline /> }
+              primary={ true }
+              onTouchTap={ handlePlayEpisode }
+              />
+            }
             />
             <Divider />
           </div>

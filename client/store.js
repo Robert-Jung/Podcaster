@@ -44,10 +44,23 @@ const channelDetail = function searchFeed(state = { episode: [] }, action) {
 
 const view = function changeView(state = '', action) {
   switch(action.type) {
+    case 'LOAD_DISCOVER':
+      return action.view
     case 'LOAD_EPISODES':
+      return action.view
+    case 'LOAD_PLAYER':
       return action.view
   default:
     return state
+  }
+}
+
+const podcastPath = function getPath(state ='', action) {
+  switch(action.type) {
+    case 'GET_PATH':
+      return action.podcastURL
+    default:
+      return state
   }
 }
 
@@ -57,7 +70,8 @@ const reducer = Redux.combineReducers(
   searchInput,
   searchPodcast,
   channelDetail,
-  view
+  view,
+  podcastPath
   })
 const store = Redux.createStore(reducer)
 

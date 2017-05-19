@@ -1,4 +1,5 @@
 const request = require('request')
+require('dotenv').config()
 
 function returnEpisodeXML(xmlLink) {
   const pathName =  ('https://api.rss2json.com/v1/api.json?rss_url=' + xmlLink + '&api_key=' + process.env.RSS_KEY)
