@@ -6,21 +6,21 @@ const MediaPlayer = (props) => {
   const style={
     audio: {
       width: '100%',
-      position: 'relative',
+      position: 'fixed',
       top: 'auto',
       bottom: 'auto'
     },
     player: {
-      position: 'relative',
-      height: '50px',
+      position: 'fixed',
+      height: '30px',
       width: '100%',
       bottom: 0,
-      backgroundColor: colors.grey800
+      backgroundColor: colors.grey800,
     }
   }
 
   return (
-    <div style={style.player}>
+    <div className='player' style={style.player}>
       <audio controls style={style.audio} src={props.podcastURL}>
       </audio>
     </div>
