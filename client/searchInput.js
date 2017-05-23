@@ -1,7 +1,6 @@
 const React = require('react')
 const store = require('./store')
 const TextField = require('material-ui/TextField').default
-const MuiThemeProvider = require('material-ui/styles/MuiThemeProvider').default
 const colors = require('material-ui/styles/colors')
 const RaisedButton = require('material-ui/RaisedButton').default
 const FontIcon = require('material-ui/FontIcon').default
