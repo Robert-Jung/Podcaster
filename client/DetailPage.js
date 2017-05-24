@@ -46,6 +46,12 @@ const ChannelHeader = (props) => {
         <CardText>
           {channel.description}
         </CardText>
+        <CardText>
+          <RaisedButton
+            label = 'Subscribe'
+            secondary={ true }
+          />
+        </CardText>
     </Card>
   )
 }
