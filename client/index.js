@@ -9,10 +9,27 @@ const MuiThemeProvider = require('material-ui/styles/MuiThemeProvider').default
 const getMuiTheme = require('material-ui/styles/getMuiTheme').default
 const colors = require('material-ui/styles/colors')
 const MediaPlayer = require('./MediaPlayer')
+const Profile = require('./Profile')
 
 injectTapEventPlugin()
 
 function App(props) {
+  const styles = {
+    profile: {
+      position: 'relative',
+      display: 'inline-block',
+      float: 'left',
+      padding: '15px',
+      width: '20%'
+    },
+    app: {
+      position: 'relative',
+      display: 'inline-block',
+      float: 'right',
+      width: '75%'
+    }
+  }
+
   return (
     <div>
       {
@@ -28,12 +45,17 @@ function App(props) {
         </div>
         : null
       }
-      {
-        props.view === 'detail'
-        ? <DetailPage channelInfo={ props.channelDetail }/>
-        : null
-      }
-      <PodcastList list={ props.podcasts }/>
+      <div style={styles.profile} >
+        <Profile style={ styles.profile} />
+      </div>
+      <div style={ styles.app }>
+        {
+          props.view === 'detail'
+          ? <DetailPage channelInfo={ props.channelDetail }/>
+          : null
+        }
+        <PodcastList list={ props.podcasts }/>
+      </div>
     </div>
   )
 }

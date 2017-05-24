@@ -6,16 +6,12 @@ const Subheader = require('material-ui/Subheader').default
 function PodcastList(props) {
   const podcasts = props.list
   const styles = {
-    root: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      justifyContent: 'space-around',
-    },
     gridList: {
       width: 700,
       height: 500,
       overflowY: 'auto',
-      paddingTop: '5px',
+      paddingTop: '10px',
+      margin: 'auto'
     },
     gridTile: {
       fontFamily: 'Roboto',
