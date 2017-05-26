@@ -25,6 +25,16 @@ function handlePlayEpisode(event) {
   })
 }
 
+function handleSubscribe(event) {
+  const currentState = store.getState()
+  const addPodcast = currentState.channelDetail.image
+
+  store.dispatch({
+    type: 'ADD_PODCAST',
+    addPodcast
+  })
+}
+
 const ChannelHeader = (props) => {
   const channel = props.info
 
@@ -50,6 +60,7 @@ const ChannelHeader = (props) => {
           <RaisedButton
             label = 'Subscribe'
             secondary={ true }
+            onTouchTap= { handleSubscribe }
           />
         </CardText>
     </Card>
