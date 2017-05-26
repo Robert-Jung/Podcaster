@@ -2,8 +2,12 @@ const React = require('react')
 const GridList = require('material-ui/GridList').GridList
 const GridTile = require('material-ui/GridList').GridTile
 const Subheader = require('material-ui/Subheader').default
+const {List, ListItem} = require('material-ui/List')
+const Divider = require('material-ui/Divider')
+const colors = require('material-ui/styles/colors')
 
 function Profile(props) {
+  const podcasts = props.subscribe
 
   const styles = {
     gridList: {
@@ -17,56 +21,21 @@ function Profile(props) {
     image: {
       width: '100%',
       height: '100%'
+    },
+    menu: {
+      fontFamily: 'Roboto',
     }
   }
 
-const podcasts = [
-  {
-    img: 'images/grid-list/00-52-29-429_640.jpg',
-    title: 'Breakfast',
-    author: 'jill111',
-  },
-  {
-    img: 'images/grid-list/burger-827309_640.jpg',
-    title: 'Tasty burger',
-    author: 'pashminu',
-  },
-  {
-    img: 'images/grid-list/camera-813814_640.jpg',
-    title: 'Camera',
-    author: 'Danson67',
-  },
-  {
-    img: 'images/grid-list/morning-819362_640.jpg',
-    title: 'Morning',
-    author: 'fancycrave1',
-  },
-  {
-    img: 'images/grid-list/hats-829509_640.jpg',
-    title: 'Hats',
-    author: 'Hans',
-  },
-  {
-    img: 'images/grid-list/honey-823614_640.jpg',
-    title: 'Honey',
-    author: 'fancycravel',
-  },
-  {
-    img: 'images/grid-list/vegetables-790022_640.jpg',
-    title: 'Vegetables',
-    author: 'jill111',
-  },
-  {
-    img: 'images/grid-list/water-plant-821293_640.jpg',
-    title: 'Water plant',
-    author: 'BkrmadtyaKarki',
-  },
-]
-
   return (
     <div id={'profile'}>
-      <span>Profile Page</span>
       <div>
+        <List>
+          <ListItem
+          style={styles.menu}
+          primaryText='PODCAST SUBSCRIPTIONS'
+          />
+        </List>
         <GridList
           cols={3}
           cellHeight={100}
@@ -75,9 +44,9 @@ const podcasts = [
         >
           {podcasts.map((podcast) => (
             <GridTile
-              key={podcast.title}
+              key={podcast}
             >
-              <text style={styles.gridTile} src={''} />
+              <img src={podcast} />
             </GridTile>
           ))}
         </GridList>
