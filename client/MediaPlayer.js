@@ -2,7 +2,6 @@ const React = require('react')
 const colors = require('material-ui/styles/colors')
 
 const MediaPlayer = (props) => {
-  console.log(props)
   const style={
     audio: {
       width: '100%',
