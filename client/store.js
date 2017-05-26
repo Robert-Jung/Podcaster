@@ -64,6 +64,15 @@ const podcastPath = function getPath(state ='', action) {
   }
 }
 
+const subscribePodcast = function getPodcast(state = [], action) {
+  switch(action.type) {
+    case 'ADD_PODCAST':
+      return [...state, action.addPodcast]
+    default:
+      return state
+  }
+}
+
 const reducer = Redux.combineReducers(
   {
   podcasts,
@@ -71,7 +80,8 @@ const reducer = Redux.combineReducers(
   searchPodcast,
   channelDetail,
   view,
-  podcastPath
+  podcastPath,
+  subscribePodcast
   })
 const store = Redux.createStore(reducer)
 
