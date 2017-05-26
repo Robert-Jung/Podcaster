@@ -19,7 +19,7 @@ function App(props) {
       position: 'relative',
       display: 'inline-block',
       float: 'left',
-      padding: '15px',
+      padding: '10px',
       width: '20%'
     },
     app: {
@@ -31,10 +31,19 @@ function App(props) {
   }
 
   return (
-    <div>
+    <div style={styles.main}>
       {
         props.view === 'discover' || 'detail' || 'player'
         ? <SearchBar searchPodcast={ props.searchPodcast }/>
+        : null
+      }
+      <div style={styles.profile} >
+        <Profile style={ styles.profile} subscribe={ props.subscribePodcast }/>
+      </div>
+      <div style={ styles.app }>
+      {
+        props.view === 'detail'
+        ? <DetailPage channelInfo={ props.channelDetail }/>
         : null
       }
       {
@@ -45,16 +54,7 @@ function App(props) {
         </div>
         : null
       }
-      <div style={styles.profile} >
-        <Profile style={ styles.profile} />
-      </div>
-      <div style={ styles.app }>
-        {
-          props.view === 'detail'
-          ? <DetailPage channelInfo={ props.channelDetail }/>
-          : null
-        }
-        <PodcastList list={ props.podcasts }/>
+      <PodcastList list={ props.podcasts }/>
       </div>
     </div>
   )
