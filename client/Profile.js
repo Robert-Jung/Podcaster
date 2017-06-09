@@ -7,7 +7,6 @@ const Divider = require('material-ui/Divider')
 const colors = require('material-ui/styles/colors')
 
 function Profile(props) {
-  console.log(props)
   let podcasts = (props.subscribe) ?props.subscribe :[]
 
   const styles = {
