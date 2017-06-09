@@ -35,7 +35,7 @@ const searchPodcast = function searchedPodcast(state = [], action) {
 
 const channelDetail = function searchFeed(state = { episode: [] }, action) {
   switch(action.type) {
-    case 'LOAD_EPISODES':
+    case 'LOAD_EPISODE':
       return action.channelDetail
     default:
       return state
@@ -46,7 +46,7 @@ const view = function changeView(state = '', action) {
   switch(action.type) {
     case 'LOAD_DISCOVER':
       return action.view
-    case 'LOAD_EPISODES':
+    case 'LOAD_EPISODE':
       return action.view
     case 'LOAD_PLAYER':
       return action.view
