@@ -7,7 +7,8 @@ const Divider = require('material-ui/Divider')
 const colors = require('material-ui/styles/colors')
 
 function Profile(props) {
-  const podcasts = props.subscribe
+  console.log(props)
+  let podcasts = (props.subscribe) ?props.subscribe :[]
 
   const styles = {
     gridList: {
@@ -42,11 +43,17 @@ function Profile(props) {
           padding={0}
           style={styles.gridList}
         >
-          {podcasts.map((podcast) => (
+          {podcasts.map((podcast, i) => (
             <GridTile
-              key={podcast}
+              key={i}
+              onClick={ ()=>
+                    store.dispatch({
+                    type: 'LOAD_EPISODE',
+                    view: 'detail',
+                    channelDetail: podcast
+                  })}
             >
-              <img src={podcast} />
+              <img src={podcast.image} />
             </GridTile>
           ))}
         </GridList>

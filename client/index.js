@@ -4,12 +4,12 @@ const store = require('./store')
 const SearchBar = require('./SearchBar')
 const PodcastList = require('./PodcastList')
 const DetailPage = require('./DetailPage')
+const MediaPlayer = require('./MediaPlayer')
+const Profile = require('./Profile')
 const injectTapEventPlugin = require('react-tap-event-plugin')
 const MuiThemeProvider = require('material-ui/styles/MuiThemeProvider').default
 const getMuiTheme = require('material-ui/styles/getMuiTheme').default
 const colors = require('material-ui/styles/colors')
-const MediaPlayer = require('./MediaPlayer')
-const Profile = require('./Profile')
 
 injectTapEventPlugin()
 

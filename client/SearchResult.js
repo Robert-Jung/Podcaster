@@ -45,7 +45,7 @@ function handleDetailPage(url) {
       type: 'CLEAR_DISCOVER'
     }),
     store.dispatch({
-      type: 'LOAD_EPISODES',
+      type: 'LOAD_EPISODE',
       view: 'detail',
       channelDetail
     })

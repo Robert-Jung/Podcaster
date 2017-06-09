@@ -27,7 +27,7 @@ function handlePlayEpisode(event) {
 
 function handleSubscribe(event) {
   const currentState = store.getState()
-  const addPodcast = currentState.channelDetail.image
+  const addPodcast = currentState.channelDetail
 
   store.dispatch({
     type: 'ADD_PODCAST',
